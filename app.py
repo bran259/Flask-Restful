@@ -7,7 +7,7 @@ app = Flask(__name__)
 #database configuration
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///rest-api.db'
 
-migrate = Migrate(db, app)
+migrate = Migrate(app, db)
 db.init_app(app)
 
 @app.route('/')
