@@ -19,3 +19,6 @@ class Post(db.Model):
     description = db.Column(db.String)
     post_image = db.Column(db,String)
 
+    #user primary key as foreign key
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
