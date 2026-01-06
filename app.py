@@ -37,7 +37,14 @@ class UserResourceById(Resource):
         pass
 
     def delete(self, id):
-        pass
+        user = User.query.get(id)
+        if not user:
+            return make_response({"message": "User not found"}, 404)
+
+        db.session.delete(user)
+        db.session.commit()
+
+        return make_response({"message": "User deleted successfully"}, 204)
 
 # mapping endpoints to their resources        
 api.add_resource(UserResource, '/users')
